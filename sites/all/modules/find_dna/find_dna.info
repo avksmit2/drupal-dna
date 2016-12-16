@@ -1,0 +1,7 @@
+name = Find DNA Letters
+description = Displays two strands of DNA based on user input to a form.
+package = Review Mods
+core = 7.x
+files[] = find_dna.module
+files[] = find_dna.test
+dependencies[] = simpletest

@@ -1,0 +1,39 @@
+<?php
+class FindDNATestCase extends DrupalUnitTestCase
+{
+  public static function getInfo()
+  {
+    return array(
+      'name' => 'DNA input tests',
+      'description' => 'Test that the correct letters were returned based on form input',
+      'group' => 'Epicodus Code Review Tests',
+    );
+  }
+
+  function testDNAOutput()
+  {
+    $description = 'An input of A should return an output of T.';
+    $input = 'A';
+    $result = find_dna($input);
+    $expected_output = 'T';
+    $this->assertEqual($result, $expected_output, $description);
+
+    $description = 'An input of T should return an output of A.';
+    $input = 'T';
+    $result = find_dna($input);
+    $expected_output = A';
+    $this->assertEqual($result, $expected_output, $description);
+
+    $description = 'An input of C should return an output of G.';
+    $input = 'C';
+    $result = find_dna($input);
+    $expected_output = G';
+    $this->assertEqual($result, $expected_output, $description);
+
+    $description = 'An input of G should return an output of C.';
+    $input = 'G';
+    $result = find_dna($input);
+    $expected_output = C';
+    $this->assertEqual($result, $expected_output, $description);
+  }
+}

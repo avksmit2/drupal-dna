@@ -1,0 +1,5 @@
+name = Ajax Module
+description = Displays whichever title clicked on in block view using ajax
+package = Review Mods
+core = 7.x
+files[] = ajaxmod.module
