@@ -42,7 +42,7 @@
   function dna_form_submit($form, &$form_state) {
     $input_dna = strtolower($form_state['values']['input_dna']);
     $result = getHelix($input_dna);
-    $_SESSION['found_dna'] = "First helix: " . strtoupper($input_dna) . ', Second helix: ' . $result;
+    $_SESSION['found_dna'] = '<h3>First half of the helix: ' . strtoupper($input_dna) . '<br> Second half of the helix: ' . $result . '</h3>';
     $form_state['redirect'] = 'find_dna_success';
   }
 
