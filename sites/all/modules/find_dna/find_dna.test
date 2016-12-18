@@ -1,6 +1,16 @@
+<?php
+//                FUNCTIONAL TESTS
+class FindDNATests extends DrupalWebTestCase {
+  public static function getInfo() {
+    return array(
+      'name' => 'Find DNA Functional Tests',
+      'description' => 'Tests',
+    )
+  }
+}
 
 <?php
-//                UNIT TESTs
+//                UNIT TESTS
 
 class FindDNATestCase extends DrupalUnitTestCase
 {

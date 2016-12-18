@@ -1,0 +1,7 @@
+name = User Status
+description = Displays a login and logout message to the user.
+package = Review Mods
+core = 7.x
+files[] = user_status.module
+files[] = user_status.test
+dependencies[] = simpletest
