@@ -1,10 +1,8 @@
 <?php
 //                FUNCTIONAL TESTS
 
-class DisplayGreetingTests extends DrupalWebTestCase
-{
-  public static function getInfo()
-  {
+class DisplayGreetingTests extends DrupalWebTestCase {
+  public static function getInfo() {
     return array(
       'name' => 'Display greeting',
       'description' => 'Test that the correct greeting is display on login and logout',
@@ -16,19 +14,17 @@ class DisplayGreetingTests extends DrupalWebTestCase
     parent::setUp(array('user_status'));
   }
 
-  public function testLogin()
-  {
+  public function testLoginWelcome() {
     $user = $this->drupalCreateAuthenticatedUser();
     $this->drupalLogin($user);
     $this->assertText('Welcome to the last Friday project site!', 'The greeting is correctly displayed.');
   }
 
-  public function drupalCreateAuthenticatedUser(array $permission = array())
-  {
-    $roles = user_roles();
-    $index = array_search('authenticated', $roles);
-    $user = $this->drupalCreateUser($permissions);
-    $user->roles[$index] = 'authenticated';
-    return user_save($user);
+  public function drupalCreateAuthenticatedUser(array $permissions = array()) {
+      $roles = user_roles();
+      $index = array_search('authenticated', $roles);
+      $user = $this->drupalCreateUser($permissions);
+      $user->roles[$index] = 'authenticated';
+      return user_save($user);
   }
 }

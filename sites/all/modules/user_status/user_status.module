@@ -6,12 +6,6 @@
       'access callback' => TRUE,
       'type' => MENU_CALLBACK,
     );
-    $items['goodbye'] = array(
-      'title' => 'Goodbye!',
-      'page callback' => 'goodbye_user',
-      'access callback' => TRUE,
-      'type' => MENU_CALLBACK,
-    );
     return $items;
   }
 
@@ -21,12 +15,4 @@
 
   function welcome_user() {
     return '<h1>Welcome to the last Friday project site!</h1>';
-  }
-
-  function user_status_user_logout(&$edit, $account) {
-    $_GET['destination'] = 'goodbye';
-  }
-
-  function goodbye_user() {
-    return '<h1>Thanks for visiting!</h1>';
   }
