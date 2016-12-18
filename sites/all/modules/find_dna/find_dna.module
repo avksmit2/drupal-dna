@@ -1,0 +1,66 @@
+<?php
+  function find_dna_menu() {
+    $items['find_dna'] = array(
+      'title' => 'Find DNA',
+      'page callback' => 'drupal_get_form',
+      'page arguments' => array('dna_form'),
+      'access callback' => TRUE,
+      'type' => MENU_NORMAL_ITEM,
+    );
+
+    $items['find_dna_success'] = array(
+      'title' => 'Here is the complete DNA',
+      'page callback' => 'dna_display',
+      'access callback' => TRUE,
+      'type' => MENU_CALLBACK,
+    );
+    return $items;
+  }
+
+  function dna_form() {
+    $form['input_dna'] = array(
+      '#title' => 'Input first DNA molecule: ',
+      '#type' => 'textfield',
+      '#description' => t("Input a strand of DNA, using only the letters A T C or G."),
+      '#element_validate' => array('element_validate_letter'),
+      '#required' => TRUE,
+    );
+
+    $form['submit'] = array(
+      '#type' => 'submit',
+      '#value' => 'Find my full DNA!',
+    );
+    return $form;
+  }
+
+  function element_validate_letter($element) {
+    if (preg_match('/[^atcgATCG\s]+/', $element['#value'])) {
+       form_error($element, t("Please enter only an 'a', 't', 'c' or 'g'."));
+    }
+  }
+
+  function dna_form_submit($form, &$form_state) {
+    $input_dna = strtolower($form_state['values']['input_dna']);
+    $nucleotides = str_split($input_dna);
+
+
+    foreach($nucleotides as $element) {
+      if ($element == 'a') {
+        $return_str[] = 't ';
+      } elseif ($element == 't') {
+        $return_str[] = 'a ';
+      } elseif ($element == 'c') {
+        $return_str[] = 'g ';
+      } elseif ($element == 'g') {
+        $return_str[] = 'c ';
+      }
+    }
+
+    $_SESSION['found_dna'] = "First helix: " . strtoupper($input_dna) . ', Second helix: ' . strtoupper(implode(" ", $return_str));
+
+    $form_state['redirect'] = 'find_dna_success';
+  }
+
+  function dna_display() {
+    return $_SESSION['found_dna'];
+  }
