@@ -9,7 +9,7 @@
     );
 
     $items['find_dna_success'] = array(
-      'title' => 'Here is the complete DNA',
+      'title' => 'Here is the complete DNA Helix!',
       'page callback' => 'dna_display',
       'access callback' => TRUE,
       'type' => MENU_CALLBACK,
@@ -35,7 +35,7 @@
 
   function element_validate_letter($element) {
     if (preg_match('/[^atcgATCG\s]+/', $element['#value'])) {
-       form_error($element, t("Please enter only an 'a', 't', 'c' or 'g'."));
+       form_error($element, t('Please enter only an a, g, c or t.'));
     }
   }
 
