@@ -5,6 +5,7 @@ class FindDNATests extends DrupalWebTestCase {
     return array(
       'name' => 'Find DNA Functional Tests',
       'description' => 'Tests',
+      'group' => 'Epicodus Code Review Tests',
     );
   }
 
@@ -13,18 +14,18 @@ class FindDNATests extends DrupalWebTestCase {
   }
 
   public function testFormValid() {
-    $this->drupalGet('find_dna_success');
-    $this->assertText('Here is the complete DNA Helix!', 'Correct form displayed!');
+    $this->drupalGet('find_dna');
+    $this->assertText('Find DNA', 'Correct form displayed!');
     $form['input_dna'] = 'a';
-    $this->drupalPost('find_dna_succss', $form, t('Find my full DNA!'));
+    $this->drupalPost('find_dna', $form, t('Find my full DNA!'));
     $this->assertText('T ', 'Correct output displayed!');
   }
 
   public function testInvalidInput() {
-    $this->drupalGet('find_dna_success');
-    $this->assertText('Here is the complete DNA Helix!', 'Correct form displayed!');
+    $this->drupalGet('find_dna');
+    $this->assertText('Find DNA', 'Correct form displayed!');
     $form['input_dna'] = 'b';
-    $this->drupalPost('find_dna_succss', $form, t('Find my full DNA!'));
+    $this->drupalPost('find_dna', $form, t('Find my full DNA!'));
     $this->assertText('Please enter only an a, g, c or t.', 'Correct output displayed!');
   }
 }
